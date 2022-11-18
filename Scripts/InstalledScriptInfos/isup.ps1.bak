@@ -1,0 +1,67 @@
+﻿
+
+param (
+
+    $direccion = "",
+    $opcion = ""
+
+)
+
+if ($direccion -ne ""){
+    if ($opcion -eq "v"){
+        $text = ping -w 1 $direccion 
+        #$text = $text.split(" ")
+        echo $text > "C:\Users\samue\OneDrive\Documentos\ping.txt"
+        #$text = $text[0]
+        $info = Get-Content ("C:\Users\samue\OneDrive\Documentos\ping.txt")
+        $text = $info[8]
+
+        if ($text -ne "    Paquetes: enviados = 4, recibidos = 4, perdidos = 0"){
+			Write-Host("host ") -NoNewline -ForegroundColor DarkRed
+            Write-Host($direccion) -NoNewline -ForegroundColor DarkRed
+            Write-Host(" is down") -ForegroundColor DarkRed
+        }else {
+			Write-Host("host ") -NoNewline -ForegroundColor Cyan
+            Write-Host($direccion) -NoNewline -ForegroundColor Cyan
+            Write-Host(" is up") -ForegroundColor Cyan
+        }
+    }elseif($opcion -eq "vv"){
+    
+        Write-Host("Scaning ") -NoNewline -ForegroundColor DarkYellow
+        Write-Host($direccion) -ForegroundColor DarkYellow
+        $text = ping -w 1 $direccion 
+        #$text = $text.split(" ")
+        #$text = $text[0]
+        echo $text > "C:\Users\samue\OneDrive\Documentos\ping.txt"
+        $info = Get-Content ("C:\Users\samue\OneDrive\Documentos\ping.txt")
+        $text = $info[8]
+
+        if ($text -ne "    Paquetes: enviados = 4, recibidos = 4, perdidos = 0"){
+            Write-Host("host ") -NoNewline -ForegroundColor DarkRed
+            Write-Host($direccion) -NoNewline -ForegroundColor DarkRed
+            Write-Host(" is down") -ForegroundColor DarkRed
+        }else { 
+            Write-Host("host ") -NoNewline -ForegroundColor Cyan
+            Write-Host($direccion) -NoNewline -ForegroundColor Cyan
+            Write-Host(" is up") -ForegroundColor Cyan
+        }
+    }else{
+        $text = ping -w 1 $direccion 
+        #$text = $text.split(" ")
+        #$text = $text[0]
+        echo $text > "C:\Users\samue\OneDrive\Documentos\ping.txt"
+        $info = Get-Content ("C:\Users\samue\OneDrive\Documentos\ping.txt")
+        $text = $info[8]
+
+        if ($text -ne "    Paquetes: enviados = 4, recibidos = 4, perdidos = 0"){
+            Write-Host("Y") -ForegroundColor Cyan
+        }else {
+            Write-Host("N") -ForegroundColor DarkRed 
+        }
+    }
+}else{
+    Write-Host("No es posible identificar la direccion de destino.") -ForegroundColor DarkRed
+    Write-Host("Pruebe con <isup direccion modo(opcional nada, v o vv )>") -ForegroundColor Cyan
+}
+
+

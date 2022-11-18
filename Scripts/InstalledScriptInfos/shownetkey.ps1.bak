@@ -1,0 +1,9 @@
+
+param (
+
+    $red = ""
+)
+
+netsh wlan show profile $red key=clear
+
+

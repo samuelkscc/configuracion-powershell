@@ -1,0 +1,4 @@
+
+
+smbclient -L esscc00395l -U infor -W esscc00395l
+smbclient -U infor -W esscc00395l //esscc00395l/D$

@@ -1,0 +1,1 @@
+notepad.exe "D:\OneDrive - PESCANOVA\Documentos\WindowsPowerShell\Scripts\InstalledScriptInfos\SMBguia.txt"
